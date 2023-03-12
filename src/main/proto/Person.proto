@@ -1,0 +1,25 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "br.com.wcr.demogrpc";
+option java_outer_classname = "Person";
+option objc_class_prefix = "HLW";
+
+message AddressRequest {
+  string address = 1;
+  string city = 2;
+  int64 zipCode = 3;
+}
+
+message PersonRequest {
+  string firstName = 2;
+  string lastName = 3;
+  repeated AddressRequest address = 4;
+}
+
+message PersonResponse {
+  string message = 1;
+}
+
+service PersonAddService {
+  rpc add(PersonRequest) returns (PersonResponse){}
+}
